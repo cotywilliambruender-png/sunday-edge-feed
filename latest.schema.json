@@ -1,0 +1,296 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Sunday Edge normalized latest.json v1",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "(Z|[+-][0-9]{2}:[0-9]{2})$"
+    },
+    "games": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": [
+              "401872953",
+              "401872949",
+              "401872954",
+              "401872951",
+              "401872952",
+              "401872956",
+              "401872950",
+              "401872955",
+              "401872957",
+              "401872958",
+              "401872959",
+              "401872960",
+              "401872961",
+              "401872962"
+            ]
+          },
+          "away": {
+            "type": "string"
+          },
+          "home": {
+            "type": "string"
+          },
+          "awayScore": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 150
+          },
+          "homeScore": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 150
+          },
+          "period": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 15
+          },
+          "clock": {
+            "type": "string",
+            "pattern": "^(?:[0-9]|0[0-9]|1[0-4]):[0-5][0-9]$|^15:00$"
+          },
+          "state": {
+            "enum": [
+              "pre",
+              "in",
+              "post"
+            ]
+          },
+          "observedAt": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "(Z|[+-][0-9]{2}:[0-9]{2})$"
+          },
+          "source": {
+            "type": "string"
+          },
+          "statusText": {
+            "type": "string"
+          },
+          "criticalChange": {
+            "type": "boolean"
+          },
+          "stats": {
+            "type": "object",
+            "properties": {
+              "away": {
+                "type": "object",
+                "properties": {
+                  "plays": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "yards": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "ypp": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "turnovers": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "thirdDown": {
+                    "type": "string"
+                  },
+                  "redZone": {
+                    "type": "string"
+                  },
+                  "possessionTime": {
+                    "type": "string"
+                  }
+                },
+                "required": [],
+                "additionalProperties": false
+              },
+              "home": {
+                "type": "object",
+                "properties": {
+                  "plays": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "yards": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "ypp": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "turnovers": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "thirdDown": {
+                    "type": "string"
+                  },
+                  "redZone": {
+                    "type": "string"
+                  },
+                  "possessionTime": {
+                    "type": "string"
+                  }
+                },
+                "required": [],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "away",
+              "home"
+            ],
+            "additionalProperties": false
+          },
+          "drives": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "team": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "result": {
+                  "type": "string"
+                },
+                "yards": {
+                  "type": "number",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "id",
+                "team",
+                "text",
+                "result"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "plays": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "period": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "clock": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "text"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "players": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "team": {
+                  "type": "string"
+                },
+                "stats": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "team",
+                "stats"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "situation": {
+            "type": "object",
+            "properties": {
+              "possession": {
+                "type": "string"
+              },
+              "down": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "distance": {
+                "type": "number",
+                "minimum": 0
+              },
+              "yardLine": {
+                "type": "number",
+                "minimum": 0
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id",
+          "away",
+          "home",
+          "awayScore",
+          "homeScore",
+          "period",
+          "clock",
+          "state",
+          "observedAt",
+          "source",
+          "stats",
+          "drives",
+          "plays",
+          "players"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 14
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "games"
+  ],
+  "additionalProperties": false
+}
